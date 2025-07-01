@@ -1,0 +1,32 @@
+---
+title: "Income"
+
+execute:
+    echo: false
+    
+---
+
+
+
+
+```{r}
+#| message: false
+
+library(tidyverse)
+
+df <- tibble(
+  income = rnorm(500, mean = 50000, sd = 12000),
+  group = sample(c("College", "No College"), size = 500, replace = TRUE)
+)
+
+ggplot(df, aes(x = group, y = income, fill = group)) +
+  geom_boxplot() +
+  labs(
+    title = "Income by Education Level",
+    x = "Education Level",
+    y = "Income"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
+
+```
